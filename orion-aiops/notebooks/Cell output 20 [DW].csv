@@ -1,0 +1,5 @@
+data_alvo,prioridade,horizonte,volume_previsto,ref_media,desvio_%,z,alerta
+2026-01-01,2 - Alta,1,13.1,13.25,-1.1,-0.03,normal
+2026-01-07,2 - Alta,7,14.9,12.777777777777779,16.6,0.42,normal
+2026-01-01,3 - Média,1,3.5,43.625,-92.0,-2.02,FOLGA
+2026-01-07,3 - Média,7,57.3,43.888888888888886,30.6,0.72,PICO

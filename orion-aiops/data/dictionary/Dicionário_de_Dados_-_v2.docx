@@ -1,0 +1,97 @@
+**Challenge - AIOps**
+
+**Dicionário de Dados**
+
+| **Nome do Campo** | **Descrição** | **Tipo de Dado** | **Formato** **Restrições** | **Obrigatoriedade** | **Lista de Valores (se aplicável)** |
+| --- | --- | --- | --- | --- | --- |
+| **Número** | Identificador único e sequencial do incidente. | Texto | INCXXXXXXX onde XXXXXXX é um número sequencial | Sim | N/A |
+| **Prioridade** | Nível de urgência e impacto do incidente. | Texto | X - aaaaaaa onde X é um número aaaaaaa é um texto Somente as prioridades 1,  2 e 3 entram para o KPI | Sim | 1 - Crítica 2 - Alta 3 - Média 4 - Baixa 5 - Muito Baixa |
+| **Produto** | O produto ou serviço afetado pelo incidente. | Texto | N/A | Não | N/A |
+| **Categoria** | Classificação primária do tipo de incidente | Texto | N/A | Não | N/A |
+| **Subcategoria** | Classificação secundária, refinando a Categoria. | Texto | Campo associado a categoria. Necessário uma categoria para seleção da subcatergoria. | Não | N/A |
+|  |
+| **Nome do Campo** | **Descrição** | **Tipo de Dado** | **Formato** **Restrições** | **Obrigatoriedade** | **Lista de Valores (se aplicável)** |
+| **Grupo designado** | Equipe responsável por trabalhar na solução do incidente. | Texto | N/A | Sim | N/A |
+| **Item de configuração** | O ativo de TI específico que está com o problema. | Texto | N/A | Não | N/A |
+| **Aberto** | Data e hora exatas em que o incidente foi registrado. | Data/Hora | dd/mm/aaaa hh:mm:ss | Sim | N/A |
+| **Resolvido** | Data e hora em que a equipe técnica determinou que o incidente foi corrigido. | Data/Hora | dd/mm/aaaa hh:mm:ss | Não | N/A |
+| **Encerrado** | Data e hora em que o incidente é finalizado (após a confirmação da solução pelo usuário ou período de espera). | Data/Hora | dd/mm/aaaa hh:mm:ss | Sim | N/A |
+| **Duração** | Tempo total decorrido entre a abertura e a resolução (ou encerramento). | Numérico | Tempo em segundos | Sim | N/A |
+| **Código de fechamento** | Razão formal para o encerramento do incidente. | Texto | N/A | Não | N/A |
+| **Descrição resumida** | Título conciso do incidente, facilitando a busca e identificação. | Texto | N/A | Sim | N/A |
+|  |
+| **Nome do Campo** | **Descrição** | **Tipo de Dado** | **Formato** **Restrições** | **Obrigatoriedade** | **Lista de Valores (se aplicável)** |
+| **Solução** | Informa se a solução foi definitiva, contorno ou nenhuma | Texto | N/A | Não | Contorno Definitiva (em branco) |
+| **Aberto por** | Nome e/ou identificação por “onde” foi aberto o incidente. | Texto | N/A | Sim | Manual Monitoramento |
+| **Incidente Pai** | Referência a um incidente anterior, se este for um incidente relacionado ou duplicado. | Texto | INCXXXXXXX onde XXXXXXX é um número sequencial | Não | N/A |
+| **Status** | Ponto atual do incidente no seu ciclo de vida. | Texto |  | Sim | Aguardando Problema Encerrado Encerrado Automaticamente Sem Intervenção |
+| **Entrou para KPI?** | Indicador de se o incidente deve ser considerado no cálculo dos KPIs | Booleano | SIM NAO | Sim | N/A |
+| **KPI Violado?** | Indicador de se o tempo de solução excedeu o limite do Acordo de Nível de Serviço (SLA). | Booleano | SIM NAO | Sim | N/A |
+
+**Informações importantes**
+
+**Campo Status: Sem Intervenção**
+
+A maioria dos incidentes fechados como “Sem Intervenção” estão associados com o campo Aberto por: “Monitoramento”.
+
+**Temos medição de 2 KPI´s para incidentes com prioridades:**
+
+**1 - Crítica, 2 - Alta e 3 - Média**
+
+**Tempo de resolução / encerramento (campo Duração)**
+
+1 - Crítica - Duração até 4h
+
+2 - Alta - Duração até 4h
+
+3 - Média - Duração até 12h
+
+4 - Baixa - Duração até 24h
+
+5 - Muito Baixa - Duração até 96h
+
+Campo: Incidente Pai com valor preenchido não entram no KPI
+
+Campo: Status = “Sem Intervenção”, não entram no KPI
+
+Obs: Não significam que não possam prejudicar algum outro incidente que o entrou no KPI ou o KPI foi violado.
+
+**Metas Anuais de KPI - Indicador medido mensalmente**
+
+**Incidentes com OLA quebrados no ano (campo duração)**
+
+| **Prioridade** | **Regra da Quantidade** | **% de atingimento** |
+| --- | --- | --- |
+| 2 - Alta | < 31 | 150% |
+| 2 - Alta | 31 a 35 | 125% |
+| 2 - Alta | 36 a 39 | 100% |
+| 2 - Alta | 40 a 45 | 75% |
+| 2 - Alta | 46 a 53 | 50% |
+| 2 - Alta | > 53 | 0% |
+|  |
+| 3 - Média | < 201 | 150% |
+| 3 - Média | 201 a 230 | 125% |
+| 3 - Média | 231 a 263 | 100% |
+| 3 - Média | 264 a 290 | 75% |
+| 3 - Média | 291 a 320 | 50% |
+| 3 - Média | > 320 | 0% |
+
+**Volume Total de incidentes tratados no ano**
+
+| **Prioridade** | **Regra da Quantidade** | **% de atingimento** |
+| --- | --- | --- |
+| 2 - Alta | < 4585 | 150% |
+| 2 - Alta | 4585 a 5388 | 125% |
+| 2 - Alta | 5389 a 6168 | 100% |
+| 2 - Alta | 6169 a 6252 | 75% |
+| 2 - Alta | 6253 a 6336 | 50% |
+| 2 - Alta | > 6336 | 0% |
+|  |
+| 3 - Média | < 19489 | 150% |
+| 3 - Média | 19489 a 22116 | 125% |
+| 3 - Média | 22117 a 22524 | 100% |
+| 3 - Média | 22525 a 23892 | 75% |
+| 3 - Média | 23893 a 24276 | 50% |
+| 3 - Média | > 24276 | 0% |
+
+Versão: 2

@@ -1,0 +1,21 @@
+# Ambiente virtual local
+Challege.venv/
+.venv/
+venv/
+
+# Configurações locais de editor e sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Cache e artefatos Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# Segredos locais
+.env
+.env.*
+!.env.example

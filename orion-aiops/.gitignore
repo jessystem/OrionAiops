@@ -1,0 +1,35 @@
+# Dados — nunca versionar dado do cliente
+data/raw/*
+!data/raw/.gitkeep
+data/bronze/*
+data/silver/*
+data/gold/*
+!data/**/.gitkeep
+
+# Artefatos de modelo
+models_store/
+*.pkl
+*.joblib
+
+# Exportações do BI (regeneráveis)
+bi/exports/*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Power BI
+*.pbix.bak
+
+# SO / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

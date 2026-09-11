@@ -1,0 +1,6 @@
+{
+  "include": ["orion-aiops/src", "orion-aiops/tests", "orion-aiops/run_pipeline.py"],
+  "extraPaths": ["orion-aiops/src"],
+  "venvPath": ".",
+  "venv": "Challege.venv"
+}

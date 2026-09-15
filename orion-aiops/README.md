@@ -316,23 +316,4 @@ Documentar limitação é sinal de maturidade, não de fraqueza. As nossas:
 | P1 com 1 única ocorrência | Sem base para modelar | Regra mantida em config, fora da modelagem |
 | Janelas de mudança não disponíveis | 1.353 incidentes causados por Change não são antecipáveis | Integração com o módulo de Change |
 
----
 
-## Roadmap
-
-| Sprint | Entrega |
-|---|---|
-| 1 · Ideação | Definição do problema, público-alvo e proposta ✅ |
-| 2 · Arquitetura | Lakehouse, 2 modelos, 5 agentes, EDA, protótipos, BI ✅ |
-| 3 · MVP preliminar | Feature de feriados, Airflow, S3 + Delta Lake, MLflow |
-| 4 · Solução final | Painel publicado, API em contêiner, integração com ITSM |
-
----
-
-## Equipe
-
-| Nome | RM |
-|---|---|
-| *(preencher em ordem alfabética)* | |
-
-Turma 2TSCP · Tecnologia em Data Science, Big Data, BI & Data Engineering

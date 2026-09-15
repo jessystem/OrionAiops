@@ -2,8 +2,9 @@
 
 Guia prático do zero. Se você nunca abriu este projeto, siga na ordem.
 
-**Estado atual:** o projeto existe apenas no `.zip` que você baixou. Ainda **não está
-no GitHub** — a parte 3 deste guia resolve isso.
+**Estado atual:** o projeto está publicado no GitHub em
+[`jessystem/OrionAiops`](https://github.com/jessystem/OrionAiops). Neste repositório,
+os arquivos da aplicação ficam na pasta `orion-aiops/`.
 
 ---
 
@@ -21,18 +22,21 @@ no GitHub** — a parte 3 deste guia resolve isso.
 No Windows, ao instalar o Python, **marque a caixa "Add Python to PATH"**. É o erro
 número um de quem depois não consegue rodar nada.
 
-### 1.2 Extraia o projeto
+### 1.2 Baixe o projeto
 
-Descompacte `orion-aiops.zip` num lugar sem espaços nem acentos no caminho.
+No terminal, clone o repositório e entre na pasta da aplicação:
 
-* Bom: `C:\projetos\orion-aiops`
-* Ruim: `C:\Users\Jéssica\Meus Documentos\Faculdade 2026\orion-aiops`
+```bash
+git clone https://github.com/jessystem/OrionAiops.git
+cd OrionAiops/orion-aiops
+```
 
-Caminhos com acento quebram algumas bibliotecas Python no Windows.
+> Se recebeu o projeto em `.zip`, descompacte-o e abra a pasta `orion-aiops/` no VS Code.
 
 ### 1.3 Abra o terminal na pasta
 
-No VS Code: **Arquivo → Abrir Pasta** → selecione `orion-aiops` → **Terminal → Novo Terminal**.
+No VS Code: **Arquivo → Abrir Pasta** → selecione `OrionAiops/orion-aiops` →
+**Terminal → Novo Terminal**.
 
 Confirme que está no lugar certo:
 
@@ -161,72 +165,79 @@ Para rodar de novo: no menu, **Kernel → Restart & Run All**.
 O Challenge dá 10% da nota para "link da aplicação funcionando".
 
 ```bash
+# Windows (PowerShell)
+$env:PYTHONPATH = "src"
 uvicorn orion.api:app --reload --port 8000
+
+# Mac / Linux
+PYTHONPATH=src uvicorn orion.api:app --reload --port 8000
 ```
 
 Abra `http://localhost:8000/docs` no navegador. Aparece uma interface onde dá para
 testar cada endpoint clicando. Ótimo para gravar no vídeo pitch.
 
-Se der erro de módulo não encontrado:
+Se preferir configurar a variável uma única vez na sessão:
 
 ```bash
-# Windows
+# Windows (Prompt de Comando)
 set PYTHONPATH=src
 # Mac/Linux
 export PYTHONPATH=src
 ```
 
+### 2.6 Dashboard operacional
+
+Com o ambiente virtual ativado, execute:
+
+```bash
+streamlit run app/dashboard.py
+```
+
+Abra a URL exibida no terminal — normalmente `http://localhost:8501`. Se a porta
+já estiver em uso, o Streamlit escolherá outra, como `http://localhost:8502`.
+
 ---
 
-## Parte 3 · Subir no GitHub
+## Parte 3 · Atualizar o GitHub
 
-### 3.1 Configure o Git (uma vez na vida)
+O repositório já está configurado em
+[`github.com/jessystem/OrionAiops`](https://github.com/jessystem/OrionAiops). Não rode
+`git init` nem adicione o `origin` novamente.
+
+### 3.1 Confira o repositório local
 
 ```bash
-git config --global user.name "Seu Nome"
-git config --global user.email "seu@email.com"
+cd ..
+git remote -v
 ```
 
-### 3.2 Crie o repositório vazio no GitHub
+O resultado deve mostrar `https://github.com/jessystem/OrionAiops.git` para busca e envio.
+Depois, volte para a aplicação com `cd orion-aiops`.
 
-1. Entre em github.com e clique no **+** no canto superior direito → **New repository**
-2. Nome: `orion-aiops`
-3. Visibilidade: **Public** — o Challenge pede link público do GitHub (20% da nota)
-4. **Não marque** "Add a README file", "Add .gitignore" nem "Choose a license".
-   O projeto já tem os três; marcar cria conflito.
-5. **Create repository**
+### 3.2 Envie alterações
 
-O GitHub mostra uma tela com comandos. Ignore-a e use os daqui.
-
-### 3.3 Envie o projeto
-
-No terminal, dentro da pasta `orion-aiops`:
+No terminal, na raiz do repositório (`OrionAiops/`), execute:
 
 ```bash
-git init
 git add .
-git commit -m "ORION AIOps - Sprint 2: arquitetura, modelos e agentes"
-git branch -M main
-git remote add origin https://github.com/SEU-USUARIO/orion-aiops.git
+git commit -m "descreva o que mudou"
 git push -u origin main
 ```
-
-Troque `SEU-USUARIO` pelo seu usuário do GitHub.
 
 **Sobre a senha:** o GitHub não aceita mais senha no `git push`. Quando pedir, use um
 **token**: github.com → foto do perfil → Settings → Developer settings → Personal access
 tokens → Tokens (classic) → Generate new token → marque o escopo `repo` → copie o token
 e cole no lugar da senha. Guarde o token, ele não aparece de novo.
 
-### 3.4 Confira o que subiu
+### 3.3 Confira o que subiu
 
-Atualize a página do repositório. Você deve ver o README renderizado com as tabelas de
-resultado. E confira duas coisas:
+Atualize a página do repositório. A página inicial aponta para a documentação da aplicação.
+Confira duas coisas:
 
 * a pasta `data/raw/` deve estar **vazia** (só com o `.gitkeep`) — o dataset não subiu, como deve ser
 * a aba **Actions** vai mostrar o CI rodando os 37 testes automaticamente
 
-### 3.5 Enviando alterações depois
+### 3.4 Enviando alterações depois
 
 Toda vez que mudar alguma coisa:
 
@@ -236,13 +247,13 @@ git commit -m "descreva o que mudou"
 git push
 ```
 
-### 3.6 Trabalhando em grupo
+### 3.5 Trabalhando em grupo
 
 Cada integrante clona uma vez:
 
 ```bash
-git clone https://github.com/SEU-USUARIO/orion-aiops.git
-cd orion-aiops
+git clone https://github.com/jessystem/OrionAiops.git
+cd OrionAiops/orion-aiops
 python -m venv .venv
 .venv\Scripts\activate          # ou source .venv/bin/activate
 pip install -r requirements.txt
@@ -320,7 +331,7 @@ ele é um dos entregáveis.
 | `No module named pandas` | Ambiente virtual não ativado | `.venv\Scripts\activate` e reinstale |
 | `Arquivo de origem não encontrado` | Falta o dataset | Copie o `LWDATASET.xlsx` para `data/raw/` |
 | `FileNotFoundError` em notebook 03/04/05 | Camada Gold não existe | Rode `python run_pipeline.py` primeiro |
-| `Permission denied` no `git push` | Senha em vez de token | Gere um token pessoal (passo 3.3) |
+| `Permission denied` no `git push` | Senha em vez de token | Gere um token pessoal (parte 3.2) |
 | LightGBM não instala | Falta compilador/libgomp | Windows: instale o Visual C++ Redistributable. Linux: `sudo apt install libgomp1` |
 | Notebook não abre | Jupyter fora do venv | Ative o venv e rode `pip install jupyter` |
 

@@ -330,20 +330,5 @@ Para confirmar que o ambiente está sadio a qualquer momento:
 python -m pytest tests/ -v
 ```
 
-Se os 37 testes passarem, a instalação está correta.
-
----
-
-## Checklist antes de entregar
-
-- [ ] `python run_pipeline.py` roda até o fim sem erro
-- [ ] Os 5 notebooks abrem com os resultados visíveis
-- [ ] `python -m pytest tests/` → 37 passed
-- [ ] Repositório público no GitHub, com o README renderizando bonito
-- [ ] `data/raw/` vazia no GitHub (dataset do cliente não versionado)
-- [ ] Nomes e RMs preenchidos no README, em ordem alfabética
-- [ ] `.pbix` criado, salvo em `bi/` e commitado
-- [ ] `.pptx` da Sprint 2 no padrão `EC_Sprint_2_2TSCP_arqsolucao_ORION_<grupo>.pptx`
-- [ ] Vídeo pitch no YouTube (público ou não listado) + arquivo `.TXT` com o link
-- [ ] Tudo anexado no portal da FIAP, em **todas** as disciplinas
+plinas
 - [ ] Todos os integrantes com cópia completa dos arquivos
